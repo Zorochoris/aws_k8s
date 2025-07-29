@@ -31,21 +31,25 @@ module "vpc" {
 
 # eks.tf
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "19.0.0"
-  cluster_name    = "my-eks-cluster"
-  cluster_version = "1.27"
-  subnets         = module.vpc.private_subnets
+  source  = "terraform-aws-modules/eks/aws"
+  version = "~> 21.0"
 
-  node_groups = {
-    eks_nodes = {
-      desired_capacity = 2
-      max_capacity     = 3
-      min_capacity     = 1
+  name               = "example"
+  kubernetes_version = "1.33"
 
-      instance_type = "t3.medium"
-    }
+  # Optional
+  endpoint_public_access = true
+
+  # Optional: Adds the current caller identity as an administrator via cluster access entry
+  enable_cluster_creator_admin_permissions = true
+
+  compute_config = {
+    enabled    = true
+    node_pools = ["general-purpose"]
   }
+
+  vpc_id     = "vpc-1234556abcdef"
+  subnet_ids = ["subnet-abcde012", "subnet-bcde012a", "subnet-fghi345a"]
 
   tags = {
     Environment = "dev"
