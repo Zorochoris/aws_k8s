@@ -53,8 +53,8 @@ module "eks" {
     node_pools = ["general-purpose"]
   }
 
-  vpc_id     = "vpc-1234556abcdef"
-  subnet_ids = ["subnet-abcde012", "subnet-bcde012a", "subnet-fghi345a"]
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnets
 
   tags = {
     Environment = "dev"
