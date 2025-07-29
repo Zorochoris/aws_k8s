@@ -1,0 +1,37 @@
+# Local Terraform directories and files
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Sensitive variable files (if you keep local overrides)
+*.tfvars
+*.tfvars.json
+
+# Terragrunt cache (if using terragrunt)
+.terragrunt-cache/
+
+# Terraform plan output files
+*.plan
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS system files
+.DS_Store
+
+# Log files
+*.log
+
+# Node / Python / etc (if you have code mixed in)
+node_modules/
+venv/
+__pycache__/
+
+# OS junk
+Thumbs.db
+
