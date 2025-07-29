@@ -2,9 +2,6 @@
 provider "aws" {
   region = "eu-west-1"
 }
-terraform import module.eks.module.kms.aws_kms_alias.this["cluster"] arn:aws:kms:eu-west-1:563746928741:alias/eks/EksDev
-
-terraform import module.eks.aws_cloudwatch_log_group.this[0] /aws/eks/EksDev/cluster
 
 terraform {
   required_version = ">= 1.0"
