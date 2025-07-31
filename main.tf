@@ -13,10 +13,11 @@ terraform {
   }
 }
 
+/*
 # vpc.tf
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
-  version = "5.5.1" 
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.5.1"
 
   name = "my-vpc1"
   cidr = "10.0.0.0/16"
@@ -29,7 +30,7 @@ module "vpc" {
   enable_vpn_gateway = true
 
   tags = {
-    Terraform = "true"
+    Terraform   = "true"
     Environment = "dev"
   }
 }
@@ -61,3 +62,4 @@ module "eks" {
     Terraform   = "true"
   }
 }
+*/
