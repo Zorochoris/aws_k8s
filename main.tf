@@ -13,6 +13,29 @@ terraform {
   }
 }
 
+resource "aws_resourcegroups_group" "k8s_resources" {
+  name        = "k8s-resource-group"
+  description = "Resource group for Kubernetes related AWS resources"
+
+  resource_query {
+    query = jsonencode({
+      ResourceTypeFilters = ["AWS::AllSupported"]
+      TagFilters = [
+        {
+          Key    = "Environment"
+          Values = ["dev"]
+        }
+      ]
+    })
+    type = "TAG_FILTERS_1_0"
+  }
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
 /*
 # vpc.tf
 module "vpc" {
